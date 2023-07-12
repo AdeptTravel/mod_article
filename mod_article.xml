@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+  <name>MOD_ARTICLE_NAME</name>
+  <author>Yaniz Corporation</author>
+  <creationDate>November 2018</creationDate>
+  <copyright>Copyright (C) 2022 The Adept Traveler, Inc. All rights reserved.</copyright>
+  <license>BSD 2 Clause; see LICENSE.txt</license>
+  <authorEmail>joomla@adept.travel</authorEmail>
+  <authorUrl>adept.travel</authorUrl>
+  <version>1.0.0</version>
+  <description>MOD_ARTICLE_DESC</description>
+
+  <languages>
+    <language tag="en-GB">language/en-GB/mod_article.ini</language>
+    <language tag="en-GB">language/en-GB/mod_article.sys.ini</language>
+  </languages>
+
+  <files>
+    <filename>mod_article.xml</filename>
+    <filename module="mod_article">mod_article.php</filename>
+    <filename>index.html</filename>
+    <filename>tmpl/default.php</filename>
+    <filename>tmpl/index.html</filename>
+  </files>
+
+  <config>
+    <fields name="params">
+      <fieldset
+        name="basic"
+        label="MOD_ARTICLE_CONFIG_TAB_BASIC_LABEL"
+        addfieldprefix="Joomla\Component\Content\Administrator\Field">
+
+        <field
+          name="articleId"
+          type="modal_article"
+          default=""
+          label="MOD_ARTICLE_CONFIG_FIELD_ARTICLE_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_ARTICLE_DESC" />
+
+        <field
+          name="spacer0"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showTitle"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_TITLE_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_TITLE_DESC"
+          default="1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showTitleTag"
+          type="headertag"
+	        label="MOD_ARTICLE_CONFIG_FIELD_SHOW_TITLE_TAG_LABEL"
+	        description="MOD_ARTICLE_CONFIG_FIELD_SHOW_TITLE_TAG_DESC"
+	        default="h3"
+          showon="showTitle:1" />
+
+        <field
+          name="showTitleLink"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_TITLE_LINK_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_TITLE_LINK_DESC"
+          default="0">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showContent"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_CONTENT_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_CONTENT_DESC"
+          default="off">
+
+          <option value="full">MOD_ARTICLE_CONFIG_OPTION_FULL</option>
+          <option value="intro">MOD_ARTICLE_CONFIG_OPTION_INTRO</option>
+          <option value="off">MOD_ARTICLE_CONFIG_OPTION_OFF</option>
+        </field>
+
+        <field
+          name="spacer1"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showImage"
+          type="list"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_IMAGE_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_IMAGE_DESC"
+          default="off">
+
+          <option value="full">MOD_ARTICLE_CONFIG_OPTION_FULL</option>
+          <option value="intro">MOD_ARTICLE_CONFIG_OPTION_INTRO</option>
+          <option value="off">MOD_ARTICLE_CONFIG_OPTION_OFF</option>
+        </field>
+
+        <field
+          name="spacer2"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showReadMore"
+          type="radio"
+          class="btn-group"
+          default="1"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_READMORE_DESC"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_READMORE_LABEL">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="textReadmore"
+          type="text"
+          label="MOD_ARTICLE_CONFIG_FIELD_TEXT_READMORE_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_TEXT_READMORE_DESC"
+          default="Read More"
+          filter="string"
+          showon="showReadMore:1" />
+
+      </fieldset>
+
+      <fieldset
+        name="info"
+        label="MOD_ARTICLE_CONFIG_TAB_INFO_LABEL">
+
+        <field
+          name="showInfo"
+          type="radio"
+          class="btn-group"
+          default="0"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DESC">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="spacer3"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showInfoContainer"
+          type="radio"
+          class="btn-group"
+          default="0"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CONTAINER_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CONTAINER_DESC"
+          showon="showInfo:1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showInfoContainerTag"
+          type="moduletag"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CONTAINER_TAG_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CONTAINER_TAG_DESC"
+          default="div"
+          showon="showInfo:1[AND]showInfoContainer:1" />
+
+        <field
+          name="showInfoContainerCss"
+          type="text"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CONTAINER_CSS_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CONTAINER_CSS_DESC"
+          default="info"
+          filter="string"
+          showon="showInfo:1[AND]showInfoContainer:1" />
+
+        <field
+          name="spacer4"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showInfoAs"
+          type="list"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_AS_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_AS_DESC"
+          default="div"
+          showon="showInfo:1">
+
+          <option value="ol">MOD_ARTICLE_CONFIG_OPTION_LIST_ORDERED</option>
+          <option value="ul">MOD_ARTICLE_CONFIG_OPTION_LIST_UNORDERED</option>
+          <option value="dl">MOD_ARTICLE_CONFIG_OPTION_LIST_DESCRIPTION</option>
+          <option value="span">MOD_ARTICLE_CONFIG_OPTION_SPAN</option>
+          <option value="div">MOD_ARTICLE_CONFIG_OPTION_DIV</option>
+        </field>
+
+        <field
+          name="showInfoAsDelimiter"
+          type="text"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_AS_DELIMITER_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_AS_DELIMITER_DESC"
+          default="info"
+          filter="string"
+          showon="showInfo:1[AND]showInfoAs:span" />
+
+        <field
+          name="showInfoAsTitle"
+          type="radio"
+          class="btn-group"
+          default="0"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_AS_TITLE_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_AS_TITLE_DESC"
+          showon="showInfo:1[AND]showInfoAs:dl">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="spacer5"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showInfoCategoryParent"
+          type="radio"
+          class="btn-group"
+          default="0"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CATEGORY_PARENT_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CATEGORY_PARENT_DESC"
+          showon="showInfo:1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showInfoCategory"
+          type="radio"
+          class="btn-group"
+          default="0"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CATEGORY_DESC"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_CATEGORY_LABEL"
+          showon="showInfo:1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="spacer6"
+          type="spacer"
+          hr="true" />
+
+        <field
+          name="showInfoDate"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_DESC"
+          default="0"
+          showon="showInfo:1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showInfoDateFormat"
+          type="text"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_FORMAT_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_FORMAT_DESC"
+          default="M d, Y"
+          filter="string"
+          showon="showInfo:1[AND]showInfoDate:1" />
+
+        <field
+          name="showInfoDateCreated"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_CREATED_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_CREATED_DESC"
+          default="0"
+          showon="showInfo:1[AND]showInfoDate:1" >
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showInfoDatePublished"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_PUBLISHED_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_PUBLISHED_DESC"
+          default="0"
+          showon="showInfo:1[AND]showInfoDate:1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+
+        <field
+          name="showInfoDateModified"
+          type="radio"
+          class="btn-group"
+          label="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_MODIFIED_LABEL"
+          description="MOD_ARTICLE_CONFIG_FIELD_SHOW_INFO_DATE_MODIFIED_DESC"
+          default="0"
+          showon="showInfo:1[AND]showInfoDate:1">
+
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+      </fieldset>
+
+      <fieldset name="advanced">
+        <field
+          name="layout"
+          type="modulelayout"
+          label="JFIELD_ALT_LAYOUT_LABEL"
+          description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+        <field
+          name="moduleclass_sfx"
+          type="textarea"
+          label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+          description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+          rows="3" />
+
+        <field
+          name="cache"
+          type="list"
+          label="COM_MODULES_FIELD_CACHING_LABEL"
+          description="COM_MODULES_FIELD_CACHING_DESC"
+          default="1"
+          filter="integer">
+
+          <option value="1">JGLOBAL_USE_GLOBAL</option>
+          <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+        </field>
+
+        <field
+          name="cache_time"
+          type="number"
+          label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+          description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+          default="900"
+          filter="integer" />
+
+        <field
+          name="cachemode"
+          type="hidden"
+          default="itemid">
+
+          <option value="itemid"></option>
+        </field>
+      </fieldset>
+    </fields>
+  </config>
+</extension>
